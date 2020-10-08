@@ -52,11 +52,12 @@ if ($chat_id == $admin) {
 if ($text == "/start") {
 bot('sendMessage', [
 'chat_id' => $chat_id,
-'text' => "𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝗧𝗼 𝗠𝘂𝘀𝗹𝗶𝗺 𝗖𝗵𝗲𝗰𝗸𝗲𝗿 𝗕𝗮𝗯𝘆",
+'text' => "- 𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝗧𝗼 𝗠𝘂𝘀𝗹𝗶𝗺 𝗖𝗵𝗲𝗰𝗸𝗲𝗿 𝗕𝗮𝗯𝘆",
 'reply_markup' => json_encode(['resize_keyboard' => true, 'keyboard' => [ 
 [["text" => "Run"],  
 ["text" => "Stop"]], 
 [["text" => "Pin User"]], 
+[["text" => "Guess"]], 
 [["text" => "Checker info"]],  
 [["text" => "Set Account"],  
 ["text" => "Set Channel"]],
@@ -156,6 +157,51 @@ bot('sendMessage', [
 'chat_id' => $chat_id, 
 'text' =>" Done Delete all users",
 ]);
+}
+$list = explode("\n", file_get_contents('https://aassllaassll73.000webhostapp.com/corup-tasmem/lis.txt'));
+$u1 = $list[array_rand($list,1)];
+$u2 = $list[array_rand($list,1)];
+$u3 = $list[array_rand($list,1)];
+$u4 = $list[array_rand($list,1)];
+$u5 = $list[array_rand($list,1)];
+$u6 = $list[array_rand($list,1)];
+$u7 = $list[array_rand($list,1)];
+$u8 = $list[array_rand($list,1)];
+$u9 = $list[array_rand($list,1)];
+$u10 = $list[array_rand($list,1)];
+if($text == "Guess"){ 
+file_put_contents("Guess","$u1
+$u2
+$u3
+$u4
+$u5
+$u6
+$u7
+$u8
+$u9
+$u10");
+bot('sendmessage',[
+'chat_id'=>$chat_id, 
+'text'=>" - The Guess Usernames،!
+• ❲ @$u1
+• ❲ @$u2
+• ❲ @$u3
+• ❲ @$u4
+• ❲ @$u5
+• ❲ @$u6
+• ❲ @$u7
+• ❲ @$u8
+• ❲ @$u9
+• ❲ @$u10, 
+•/on ➛ : Added To List.!"
+ ]);
+}
+$us = file_get_contents('Guess');
+if ($text == '/on') {
+bot('sendmessage',[
+'chat_id'=>$chat_id, 
+'text'=>"- Done Added To List.!",]);
+file_put_contents("users1", trim("\n" . "$us",""),FILE_APPEND);
 }
 if ($text == "Run") {
 system("pm2 stop $nn");
